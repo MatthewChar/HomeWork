@@ -9,6 +9,7 @@ public class LocCounter {
 	private int breconCount;
 	private int tryCatchCount;
 	private int commentCount;
+	private int methodCount;
 
 	public int getLineCount() {
 		return lineCount;
@@ -42,6 +43,10 @@ public class LocCounter {
 		return commentCount;
 	}
 
+	public int getMethodCount() {
+		return methodCount;
+	}
+
 	public String LineCount(String codeStr) {
 		commentCount = 0;
 		lineCount = 0;
@@ -71,6 +76,7 @@ public class LocCounter {
 		whileCount = 0;
 		breconCount = 0;
 		tryCatchCount = 0;
+		methodCount = 0;
 		for (int i = 0; i < codeHold.size(); i++) {
 			if (codeHold.get(i).contains("if (") || codeHold.get(i).contains("if else (")
 					|| codeHold.get(i).contains(" else {")) {
@@ -90,6 +96,12 @@ public class LocCounter {
 			}
 			if (codeHold.get(i).contains("try {") || codeHold.get(i).contains("catch (")) {
 				tryCatchCount++;
+			}
+			if (codeHold.get(i).contains("public") || codeHold.get(i).contains("private")) {
+				String hold = codeHold.get(i);
+				if (hold.contains("(")) {
+					methodCount++;
+				}
 			}
 		}
 
