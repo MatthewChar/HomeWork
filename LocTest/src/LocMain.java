@@ -106,7 +106,7 @@ public class LocMain {
 				+ "\n" + "This is your for loop count: " + javaCounter.getForCount() + "\n"
 				+ "This is your while loop count: " + javaCounter.getWhileCount() + "\n"
 				+ "This is your break and continue count: " + javaCounter.getbreconCount() + "\n"
-				+ "This is your try and catch count: " + javaCounter.gettryCatchCount() + "\n" + 
-				"This is how many methods you have: " + javaCounter.getMethodCount());
+				+ "This is your try and catch count: " + javaCounter.gettryCatchCount() + "\n"
+				+ "These are the methods you have: " + javaCounter.getMethodName());
 	}
 }
