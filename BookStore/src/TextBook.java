@@ -1,6 +1,6 @@
 import java.io.Serializable;
 
-public class TextBook implements Serializable{
+public class TextBook implements Serializable {
 
 	private Integer sku;
 	private String title;
@@ -31,8 +31,8 @@ public class TextBook implements Serializable{
 	}
 
 	public String toString() {
-		return "Stock-Keeping unit: " + sku + "\n" + "title: " + title + "\n"
-				+ "price: $" + price + "\n" + "There are " + quan + " copies left";
+		return "Stock-Keeping unit: " + sku + "\n" + "Title: " + title + "\n" + "Price: $" + price + "\n" + "There are "
+				+ quan + " copies left";
 	}
 
 }
