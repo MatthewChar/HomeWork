@@ -1,8 +1,7 @@
-import java.awt.event.KeyEvent;
 
+import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.LinkedList;
-
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
@@ -12,7 +11,6 @@ public class Type_B_GameObject extends GameObject implements KeyListener {
 	public Type_B_GameObject(int x, int y) {
 		super(x, y);
 		setDirection(Direction.LEFT);
-
 		imageList = new LinkedList<Icon>();
 		imageList.add(new ImageIcon("images/Type_D_Up.png"));
 		imageList.add(new ImageIcon("images/Type_B_Down.png"));
@@ -22,30 +20,22 @@ public class Type_B_GameObject extends GameObject implements KeyListener {
 	}
 
 	public void move(Canvas c, int highlighted) {
-		Icon icon = getCurrentImage();
 		highLighted = highlighted;
+		// System.out.println(highLighted);
+		Icon icon = getCurrentImage();
+		// Icon icon = imageList.get(1);
 
 		int iconHeight = icon.getIconHeight();
 		int iconWidth = icon.getIconWidth();
 		int canvasHeight = (int) c.getSize().getHeight();
 		int canvasWidth = (int) c.getSize().getWidth();
-		// int canvasHeightHalf = canvasHeight / 2;
-		// int canvasWidthHalf = canvasWidth / 2;
-
-		// System.out.println("THis is X " + getX());
-		// System.out.println("THis is Y " + getY());
-		// System.out.println("THis is X with width" + (getX() + canvasWidth));
-		// System.out.println("THis is Y height" + (getY() + canvasHeight));
-		// System.out.println("This is Canvas height " + canvasHeight / 2);
-		// System.out.println("This is Canvas width " + canvasWidth / 2);
-		// System.out.println(highlighted);
-		// System.out.println(getDirection());
-		if (highLighted == 3) {
-			//System.out.println("this is image in highlighted" + currentImage);
-			// MOVE BLUE GAME OBJECT
+		// MOVE BALL AND CHECK FOR A COLLISION WITH WALL
+		// System.out.println("For C " + getX());
+		if (highlighted == 3) {
+			// setDirection(Direction.NONE);
+			// System.out.println(icon);
 			switch (getDirection()) {
 			case Direction.UP:
-				//System.out.println("this is getDirection" + getDirection());
 				setY(getY() - getVelocity());
 				if (getY() < 0) {
 					setY(0);
@@ -73,9 +63,6 @@ public class Type_B_GameObject extends GameObject implements KeyListener {
 				break;
 			}
 		} else {
-//			System.out.println("this is image in else " + currentImage);
-//			System.out.println("THis is Y " + getY());
-			// System.out.println(getDirection());
 			if (getDirection() == Direction.UP) {
 				// System.out.println("this is getDirection" + getDirection());
 				setDirection(Direction.UP);
@@ -131,16 +118,16 @@ public class Type_B_GameObject extends GameObject implements KeyListener {
 				if (getX() < 0) {
 					setX(0);
 					setDirection(Direction.LEFT);
-				}
-			} else if (getX() == 300) {
-				int countR = (int) (Math.random() * 2 + 1);
-				if (countR == 1) {
-					setDirection(Direction.UP);
-				} else {
-					setDirection(Direction.DOWN);
+				} else if (getX() == 300) {
+					int countR = (int) (Math.random() * 2 + 1);
+					if (countR == 1) {
+						setDirection(Direction.UP);
+					} else {
+						setDirection(Direction.DOWN);
+					}
 				}
 			} else {
-				//System.out.println("this is image in else 2 " + currentImage);
+				// System.out.println("this is image in else 2 " + currentImage);
 				// System.out.println("this is currentimage" + currentImage);
 				if (currentImage == 0) {
 					setDirection(Direction.UP);
@@ -153,18 +140,15 @@ public class Type_B_GameObject extends GameObject implements KeyListener {
 				}
 			}
 		}
-
 	}
 
 	// SPECIFY THE IMAGE TO DISPLAY
 	// USED FOR ANIMATION
 	public void setImage() {
 		switch (getDirection()) {
-
 		case Direction.NONE:
 			break;
 		case Direction.UP:
-			// System.out.println("this is getDirection" + getDirection());
 			currentImage = 0;
 			break;
 		case Direction.DOWN:
@@ -190,17 +174,20 @@ public class Type_B_GameObject extends GameObject implements KeyListener {
 
 	public void keyPressed(KeyEvent e) {
 		if (highLighted == 3) {
-			// System.out.println("in keypress " + getDirection());
 			if (e.getKeyCode() == KeyEvent.VK_UP) {
+				// setVelocity(10);
 				setDirection(Direction.UP);
 			}
 			if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+				// setVelocity(10);
 				setDirection(Direction.DOWN);
 			}
 			if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+				// setVelocity(10);
 				setDirection(Direction.LEFT);
 			}
 			if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+				// setVelocity(10);
 				setDirection(Direction.RIGHT);
 			}
 		}
